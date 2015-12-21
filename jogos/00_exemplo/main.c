@@ -51,12 +51,8 @@ int configura(config_ *config){
 		curMenu=menu;
 		for(int i=1;curMenu->next && i<cur;i++)curMenu=curMenu->next;
 		if(ch=='\n'){
-			if(cur==1){
-				config->a = menu->val;
-			}
-			if(cur==3){
-				break;
-			}
+			if(cur==id)break;//sair
+			if(cur==1)config->a = menu->val;
 		}
 	}
 	freeMenu(menu);
@@ -71,7 +67,7 @@ int mainMenu(){
 	int id=0,cur=1,ch;
 	menu_opt *menu=NULL;
 	screen *scr = screenAlloc(300,38),*scr2=NULL;
-	printStrToScreenPos(scr,"Exemplo",1,1);
+	printStrToScreenPos(scr,"Exemplo",1,1);//////////////////////////////////////////////////////////////////
 	screenMove(scr,0,3);
 	menu = insereMenuOpt(menu,menuOptionButton("Iniciar o jogo",&id),0);
 	menu = insereMenuOpt(menu,menuOptionButton("Configurações", &id),0);

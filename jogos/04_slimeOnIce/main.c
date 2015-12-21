@@ -370,26 +370,19 @@ int openConfig(playerT player){
 		clear();
 		printScreen(scr2);
 		while(!(ch = readKey()));
-			   	printf("aaa '%c' %d\n",ch,ch);fflush(stdout);
 		menuMove(menu,scr,ch,&cur);
-			   	printf("aaaaaa\n");fflush(stdout);
 		if(ch=='\n'){
-			printf("bbb");fflush(stdout);
 			if(cur==id)break;
 			curMenu=menu;
 			for(int i=1;i<cur;i++)curMenu=curMenu->next;
-			printf("dddddd '%c' %d",curMenu->val,curMenu->val);fflush(stdout);
 			while(cur>3 && (
 				curMenu->val==player.config[4] ||
 				curMenu->val==player.config[5] ||
 				curMenu->val==player.config[6] ||
 				curMenu->val==player.config[7] ||
 				curMenu->val==player.config[8] )){
-			   	printf("ccc '%c' %d",curMenu->val,curMenu->val);fflush(stdout);
 				curMenu->val = readKey();
-			   	printf("cccccc '%c' %d",curMenu->val,curMenu->val);fflush(stdout);
 			}
-			printf("ddd '%c' %d",curMenu->val,curMenu->val);fflush(stdout);
 			player.config[cur]=curMenu->val;
 		}
 	}
@@ -497,9 +490,9 @@ int openRanking(char* player){
 	for(i=0;i<10;i++){
 		if(strcmp("Default",rank[i].name)){
 			printf("                       %2d %8d",rank[i].fases,rank[i].score);
-			printf("\r%2d",i+1);
-			if(!strcmp(player,rank[i].name))printf(">%s<",rank[i].name);
-			else printf(" %s ",rank[i].name);
+			printf("\r%2d ",i+1);
+			if(!strcmp(player,rank[i].name))printf(ESCC_INVERTED"%s"ESCC_DEF,rank[i].name);
+			else printf("%s",rank[i].name);
 			printf("\n");
 		}
 	}

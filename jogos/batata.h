@@ -47,20 +47,22 @@ int usleep(int);/* To avoid warnings on compilation */
 #define SUM(x,y) y##x
 
 
-#define ESCC_SGR_(x)   "\x1b["STR(x)"m"
-#define ESCC_SGR(x)   ESCC_SGR_(x)
-#define ESCC_DEF      ESCC_SGR(0)          //default
-#define ESCC_BOLD     ESCC_SGR(1)          //bold
-#define ESCC_UNDER_   ESCC_SGR(4)          //underline
-#define ESCC_BLINK    ESCC_SGR(5)          //blink
-#define ESCC_FONT(x)  ESCC_SGR(SUM(x,1))   //change font     ( 10- 19 default=10)
-#define ESCC_FG_C(x)  ESCC_SGR(SUM(x,3))   //fg color        ( 30- 37 default=39)
-#define ESCC_BG_C(x)  ESCC_SGR(SUM(x,4))   //bg color        ( 40- 47 default=49)
-#define ESCC_FG_CB(x) ESCC_SGR(SUM(x,9))   //fg color bright ( 90- 97 default=39)
-#define ESCC_BG_CB(x) ESCC_SGR(SUM(x,10))  //bg color bright (100-107 default=49)
+#define ESCC_SGR_(x)    "\x1b["STR(x)"m"
+#define ESCC_SGR(x)     ESCC_SGR_(x)
+#define ESCC_DEF        ESCC_SGR(0)          //default
+#define ESCC_BOLD       ESCC_SGR(1)          //bold
+#define ESCC_UNDER_     ESCC_SGR(4)          //underline
+#define ESCC_BLINK      ESCC_SGR(5)          //blink
+#define ESCC_INVERTED   ESCC_SGR(7)          //inverted
+#define ESCC_N_INVERTED ESCC_SGR(27)         //inverted
+#define ESCC_FONT(x)    ESCC_SGR(SUM(x,1))   //change font     ( 10- 19 default=10)
+#define ESCC_FG_C(x)    ESCC_SGR(SUM(x,3))   //fg color        ( 30- 37 default=39)
+#define ESCC_BG_C(x)    ESCC_SGR(SUM(x,4))   //bg color        ( 40- 47 default=49)
+#define ESCC_FG_CB(x)   ESCC_SGR(SUM(x,9))   //fg color bright ( 90- 97 default=39)
+#define ESCC_BG_CB(x)   ESCC_SGR(SUM(x,10))  //bg color bright (100-107 default=49)
 
-#define ESCC_HIDE_C   "\x1b[?25l"          //hide cursor
-#define ESCC_SHOW_C   "\x1b[?25h"          //show cursor
+#define ESCC_HIDE_C     "\x1b[?25l"          //hide cursor
+#define ESCC_SHOW_C     "\x1b[?25h"          //show cursor
 
 
 #define SCREEN_DEF_X    100

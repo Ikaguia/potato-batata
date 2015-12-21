@@ -357,20 +357,20 @@ void printScreen(screen* scr){
 			}
 			if(!cur2.inverted && cur.inverted){
 				cur2.inverted = 1;
-				printf(ESCC_SGR(7));
+				printf(ESCC_INVERTED);
 			}
 			if(cur2.inverted && !cur.inverted){
 				cur2.inverted = 0;
-				printf(ESCC_SGR(27));
+				printf(ESCC_N_INVERTED);
 			}
 			if(scr->curPos.x==x && scr->curPos.y==y){
-				if(cur2.inverted)printf(ESCC_SGR(27));
-				else printf(ESCC_SGR(7));
+				if(cur2.inverted)printf(ESCC_N_INVERTED);
+				else printf(ESCC_INVERTED);
 			}
 			printf("%s",cur.val);
 			if(scr->curPos.x==x && scr->curPos.y==y){
-				if(cur2.inverted)printf(ESCC_SGR(7));
-				else printf(ESCC_SGR(27));
+				if(cur2.inverted)printf(ESCC_INVERTED);
+				else printf(ESCC_N_INVERTED);
 			}
 		}
 		printf(ESCC_DEF);
