@@ -1,0 +1,16 @@
+Exemplo          00_exemplo
+Charadas         01_charadas
+Campo_Minado     02_camp_min
+Batalha_Naval    03_batalhaNaval
+Slime_on_Ice     04_slimeOnIce
+Jogo_da_Velha    05_jogoDaVelha
+Dados            06_dados
+WPuzzle          07_wPuzzle
+2048             08_2048
+Snake            09_snake
+Labirinto        10_labirinto
+Tron             11_tron
+Pacman           12_pacman
+Batata           13_batata_jogo
+Paciência        14_paciencia
+Paciência_Spider 15_pacSpider
