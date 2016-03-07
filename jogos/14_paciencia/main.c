@@ -184,13 +184,13 @@ void printCardToScreen(screen* scr,carta* card_,int baseX,int baseY){
 		 	for(int y=1;y<=4;y++){
 		 		if(baseY+y<scr->alt){
 					scr->cur.FGcolor=COLOR_RED;
-			 		printCharToScreenPos(scr,"⧼",baseX+2,baseY+y);
-			 		printCharToScreenPos(scr,"⧼",baseX+4,baseY+y);
-			 		printCharToScreenPos(scr,"⧼",baseX+6,baseY+y);
+			 		printCharToScreenPos(scr,"⟪",baseX+2,baseY+y);
+			 		printCharToScreenPos(scr,"⟪",baseX+4,baseY+y);
+			 		printCharToScreenPos(scr,"⟪",baseX+6,baseY+y);
 					scr->cur.FGcolor=COLOR_BLACK;
-			 		printCharToScreenPos(scr,"⧼",baseX+1,baseY+y);
-			 		printCharToScreenPos(scr,"⧼",baseX+3,baseY+y);
-			 		printCharToScreenPos(scr,"⧼",baseX+5,baseY+y);
+			 		printCharToScreenPos(scr,"⟪",baseX+1,baseY+y);
+			 		printCharToScreenPos(scr,"⟪",baseX+3,baseY+y);
+			 		printCharToScreenPos(scr,"⟪",baseX+5,baseY+y);
 		 		}
 		 	}
 		}

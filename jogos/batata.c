@@ -472,23 +472,28 @@ void printFieldCoordToScreen(screen* scr,int baseX,int baseY,int sizeX,int sizeY
 void printFieldToScreen(screen* scr,int baseX,int baseY,int lar,int alt,int sizeX,int sizeY,char* corner1,char* corner2,char* corner3,char* corner4,char* lineV,char* lineH,char* inLeft,char* inRight,char* inDown,char* inUp,char* cross){
 	char str[21];
 	int cont = 1,i=alt;
+	screen_coord save = scr->cur;
 	do{
 		cont++;
 		i/=10;
 	} while(i);
 	screenMove(scr,baseX,baseY);
+	resetScreenCoord(&(scr->cur));
 	for(int x=1;x<=lar;x++){
 		sprintf(str,"%*d",sizeX-1,x);
 		printStrToScreen(scr,str);
 	}
+	scr->cur = save;
 	baseY++;
 	printFieldCoordToScreen(scr,baseX,baseY,sizeX,sizeY,corner1,lineH,inDown,lineV,lineV,inRight,lineH,cross);
 	for(int x=1;x<lar-1;x++){
 		printFieldCoordToScreen(scr,baseX+(x*(sizeX-1)),baseY,sizeX,sizeY,inDown,lineH,inDown,lineV,lineV,cross,lineH,cross);
 	}
 	printFieldCoordToScreen(scr,baseX+((lar-1)*(sizeX-1)),baseY,sizeX,sizeY,inDown,lineH,corner2,lineV,lineV,cross,lineH,inLeft);
+	resetScreenCoord(&(scr->cur));
 	sprintf(str,"%*d",cont,1);
 	printStrToScreenPos(scr,str,baseX+(lar*(sizeX-1))+1,baseY+((sizeY-2)/2)+1);
+	scr->cur = save;
 
 	for(int y=1;y<alt-1;y++){
 		printFieldCoordToScreen(scr,baseX,baseY+(y*(sizeY-1)),sizeX,sizeY,inRight,lineH,cross,lineV,lineV,inRight,lineH,cross);
@@ -496,8 +501,10 @@ void printFieldToScreen(screen* scr,int baseX,int baseY,int lar,int alt,int size
 			printFieldCoordToScreen(scr,baseX+(x*(sizeX-1)),baseY+(y*(sizeY-1)),sizeX,sizeY,cross,lineH,cross,lineV,lineV,cross,lineH,cross);
 		}
 		printFieldCoordToScreen(scr,baseX+((lar-1)*(sizeX-1)),baseY+(y*(sizeY-1)),sizeX,sizeY,cross,lineH,inLeft,lineV,lineV,cross,lineH,inLeft);
+		resetScreenCoord(&(scr->cur));
 		sprintf(str,"%*d",cont,y+1);
 		printStrToScreenPos(scr,str,baseX+(lar*(sizeX-1))+1,baseY+(y*(sizeY-1))+((sizeY-2)/2)+1);
+		scr->cur = save;
 	}
 
 	printFieldCoordToScreen(scr,baseX,baseY+((alt-1)*(sizeY-1)),sizeX,sizeY,inRight,lineH,cross,lineV,lineV,corner3,lineH,inUp);
@@ -505,8 +512,10 @@ void printFieldToScreen(screen* scr,int baseX,int baseY,int lar,int alt,int size
 		printFieldCoordToScreen(scr,baseX+(x*(sizeX-1)),baseY+((alt-1)*(sizeY-1)),sizeX,sizeY,cross,lineH,cross,lineV,lineV,inUp,lineH,inUp);
 	}
 	printFieldCoordToScreen(scr,baseX+((lar-1)*(sizeX-1)),baseY+((alt-1)*(sizeY-1)),sizeX,sizeY,cross,lineH,inLeft,lineV,lineV,inUp,lineH,corner4);
+	resetScreenCoord(&(scr->cur));
 	sprintf(str,"%*d",cont,alt);
 	printStrToScreenPos(scr,str,baseX+(lar*(sizeX-1))+1,baseY+((alt-1)*(sizeY-1))+((sizeY-2)/2)+1);
+	scr->cur = save;
 }
 
 void screenMove(screen* scr,int x,int y){

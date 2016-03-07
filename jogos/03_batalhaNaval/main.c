@@ -136,23 +136,23 @@ void printMapToScreen(screen* scr,config_ config,mapa map,int hide,int baseX,int
 		scr->cur.BGcolor=COLOR_BLUE;
 		for(int x=0;x<config.tam;x++){
 			if(map[x][y].val && (hide!=1 || map[x][y].val2)){
-				if(config.tam==10)printCharToScreen(scr,"⧼");
-				printCharToScreen(scr,"⧼");
+				if(config.tam==10)printCharToScreen(scr,"∿");
+				printCharToScreen(scr,"∿");
 				if(y-1>=0 && map[x][y-1].val3 == map[x][y].val3){
 					scr->cur.FGcolor=COLOR_GREEN;
 					printCharToScreen(scr,"▓");
 					scr->cur.FGcolor=COLOR_DEF;
 				}
-				else printCharToScreen(scr,"⧼");
-				printCharToScreen(scr,"⧼");
-				if(config.tam==10)printCharToScreen(scr,"⧼");
+				else printCharToScreen(scr,"∿");
+				printCharToScreen(scr,"∿");
+				if(config.tam==10)printCharToScreen(scr,"∿");
 			}
 			else{
-				if(config.tam==10)printCharToScreen(scr,"⧼");
-				printCharToScreen(scr,"⧼");
-				printCharToScreen(scr,"⧼");
-				printCharToScreen(scr,"⧼");
-				if(config.tam==10)printCharToScreen(scr,"⧼");
+				if(config.tam==10)printCharToScreen(scr,"∿");
+				printCharToScreen(scr,"∿");
+				printCharToScreen(scr,"∿");
+				printCharToScreen(scr,"∿");
+				if(config.tam==10)printCharToScreen(scr,"∿");
 			}
 		}
 		screenMove(scr,baseX,baseY+(2*y)+1);
@@ -164,8 +164,8 @@ void printMapToScreen(screen* scr,config_ config,mapa map,int hide,int baseX,int
 					printCharToScreen(scr,"▓");
 				}
 				else{
-					if(config.tam==10)printCharToScreen(scr,"⧼");
-					printCharToScreen(scr,"⧼");
+					if(config.tam==10)printCharToScreen(scr,"∿");
+					printCharToScreen(scr,"∿");
 					scr->cur.FGcolor=COLOR_GREEN;
 				}
 				scr->cur.bold=-1;
@@ -180,8 +180,8 @@ void printMapToScreen(screen* scr,config_ config,mapa map,int hide,int baseX,int
 				}
 				else{
 					scr->cur.FGcolor=COLOR_DEF;
-					printCharToScreen(scr,"⧼");
-					if(config.tam==10)printCharToScreen(scr,"⧼");
+					printCharToScreen(scr,"∿");
+					if(config.tam==10)printCharToScreen(scr,"∿");
 				}
 			}
 			// if(map[x][y].val){
@@ -189,11 +189,11 @@ void printMapToScreen(screen* scr,config_ config,mapa map,int hide,int baseX,int
 			// 	printStrToScreen(scr,str);
 			// }
 			else{
-				if(config.tam==10)printCharToScreen(scr,"⧼");
-				printCharToScreen(scr,"⧼");
+				if(config.tam==10)printCharToScreen(scr,"∿");
+				printCharToScreen(scr,"∿");
 				printCharToScreen(scr," ");
-				printCharToScreen(scr,"⧼");
-				if(config.tam==10)printCharToScreen(scr,"⧼");
+				printCharToScreen(scr,"∿");
+				if(config.tam==10)printCharToScreen(scr,"∿");
 			}
 		}
 		scr->cur.BGcolor=COLOR_DEF;
@@ -350,8 +350,8 @@ int bomb(screen* scr,config_ config,mapa map,int x,int y,int baseX,int baseY){
 	//do the screen
 	if(!map[x][y].val){
 		scr->cur.BGcolor=COLOR_BLUE;
-		if(config.tam==10)printCharToScreenPos(scr,"⧽",baseX+(x*5)+2,baseY+(y*2)+2);
-		if(config.tam==15)printCharToScreenPos(scr,"⧽",baseX+(x*3)+1,baseY+(y*2)+2);
+		if(config.tam==10)printCharToScreenPos(scr,"Ṽ",baseX+(x*5)+2,baseY+(y*2)+2);
+		if(config.tam==15)printCharToScreenPos(scr,"Ṽ",baseX+(x*3)+1,baseY+(y*2)+2);
 		scr->cur.BGcolor=COLOR_DEF;
 	}
 	else{
@@ -451,8 +451,8 @@ int jogo(config_ config){
 		freeMap(config,map[0]);
 		return 2;
 	}
-	if(geraMapa(config,map[0],colocaBarcoPL))return 0;
-	//if(geraMapa(config,map[0],colocaBarcoAI))return 0;
+	//if(geraMapa(config,map[0],colocaBarcoPL))return 0;
+	if(geraMapa(config,map[0],colocaBarcoAI))return 0;
 	if(geraMapa(config,map[1],colocaBarcoAI))return 0;
 	printStrToScreenPos(scr,"Batalha Naval",0,0);
 	scr->cur.FGcolor=COLOR_BLUE;
